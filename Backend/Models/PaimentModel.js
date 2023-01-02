@@ -11,14 +11,12 @@ const paiment = new mongoose.Schema(
     type: Date,
     required: true
   },
-//   roleid:{
-//     type: mongoose.Schema.Types.ObjectId,
-//      ref: 'roles'
-//     }
- 
+  appartementid:{
+    type: mongoose.Schema.Types.ObjectId,
+     ref: 'appartements'
+    }
 }
 )
-
  module.exports= mongoose.model("paiment", paiment);
 
 

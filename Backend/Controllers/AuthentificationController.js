@@ -2,7 +2,6 @@ const Admin = require("../Models/SyndicatModel");
 const bcryptjs = require("bcryptjs");
 const localstorage=require('local-storage')
 const jwt = require('jsonwebtoken')
-const Appratement = require("../Models/AppratementModel");
 const Paiment = require("../Models/PaimentModel");
 // // method : post => url : api/auth/login =>acces : Public
 exports.Login = async (req, res) => {

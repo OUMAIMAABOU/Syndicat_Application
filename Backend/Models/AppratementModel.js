@@ -1,17 +1,24 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-const Appartement= new mongoose.Schema(
-    {
-        Adresse:{
-            type:String,
-            require:true
-        },
-        isRented:Boolean,
-        client:{
-            name:String,
-            CIN:String,
-            tele:String
-        }
-    },{timestamps:true}
-)
-module.exports=mongoose.model("appartement",Appartement)
+const Appartement = new mongoose.Schema(
+  {
+    Adresse: {
+      type: String,
+      require: true,
+    },
+    numero: {
+      type: Number,
+      unique: true,
+      require: true,
+    },
+    loue: Boolean,
+    surface: String,
+    prix: Number,
+    client_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "clients",
+    },
+  },
+  { timestamps: true }
+);
+module.exports = mongoose.model("appartement", Appartement);
