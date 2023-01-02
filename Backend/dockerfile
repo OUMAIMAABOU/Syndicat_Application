@@ -1,0 +1,20 @@
+FROM node:16
+
+LABEL version="1.0.0"
+
+WORKDIR /app
+
+COPY ["package.json","package-lock.json","./"]
+
+RUN npm install -g nodemon
+
+COPY . .
+
+EXPOSE 8080
+
+ENV PORT=8080
+ENV MONG_URL=mongodb+srv://root2:root@cluster0.xrtofu4.mongodb.net/SyndicatDb?retryWrites=true&w=majority
+ENV NODE_ENV=development
+ENV ACCESS_TOKEN=c5ff4b853bbb573306ff40a52d253cca4e0fdce638f701673cb510d038fee880
+ENV REFRESH_TOKEN=d913494bfc0f4736bb2b3bcf1e400204645f471299e4a1f00bee102e192d9b72
+CMD npm start
