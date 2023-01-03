@@ -14,6 +14,7 @@ app.use(express.urlencoded({extended:true}))
 
 require("./Routers/AuthentificationRouter")(app);
 require("./Routers/AppartementRouter")(app);
+require("./Routers/ClientRouter")(app);
 
 
 

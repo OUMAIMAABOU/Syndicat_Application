@@ -10,7 +10,7 @@ exports.CreateAppartement = async (req, res) => {
       else res.status(400).json("some thing worning");
     }
   } catch (e) {
-    res.status(400).send(e);
+    res.status(400).send(e.message);
   }
 };
 
