@@ -13,3 +13,14 @@ exports.CreateClient = async (req, res) => {
       res.status(400).send(e.message);
     }
   };
+
+  exports.UpdateClient=async(req,res)=>{
+    try{
+  const { body}=req;
+  if(await Client.updateOne({_id:req.params.id},{...body})) res.status(200).send("update")
+  
+    }catch(e){
+      res.status(400).send(e);
+  
+    }
+  }
