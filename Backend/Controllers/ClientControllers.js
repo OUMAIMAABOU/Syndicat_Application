@@ -31,3 +31,10 @@ exports.DeleteClient = async (req, res) => {
       res.status(400).send(e);
     }
   };
+  exports.ShowClient=async(_,res)=>{
+    try{
+      res.json(await Client.find())
+    }catch(e){
+      res.status(400).send(e);
+    }
+   }
