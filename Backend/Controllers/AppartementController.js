@@ -14,6 +14,17 @@ exports.CreateAppartement = async (req, res) => {
   }
 };
 
+exports.UpdateAppartement=async(req,res)=>{
+  try{
+const { body}=req;
+if(await Appartement.updateOne({_id:req.params.id},{...body})) res.status(200).send("update")
+
+  }catch(e){
+    res.status(400).send(e);
+
+  }
+}
+
 exports.DeleteAppartement = async (req, res) => {
   try {
     if(await Appartement.deleteOne({_id:req.params.id}))  res.status(200).send("delete");
@@ -21,3 +32,10 @@ exports.DeleteAppartement = async (req, res) => {
     res.status(400).send(e);
   }
 };
+ exports.ShowAppartement=async(_,res)=>{
+  try{
+    res.json(await Appartement.find())
+  }catch(e){
+    res.status(400).send(e);
+  }
+ }
