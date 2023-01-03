@@ -1,4 +1,5 @@
 const Appartement = require("../Models/AppratementModel");
+const Client =require("../Models/ClientModel")
 
 exports.CreateAppartement = async (req, res) => {
   try {
@@ -34,7 +35,7 @@ exports.DeleteAppartement = async (req, res) => {
 };
  exports.ShowAppartement=async(_,res)=>{
   try{
-    res.json(await Appartement.find())
+    res.json(await Appartement.find().populate({path:"client_id",model:Client}))
   }catch(e){
     res.status(400).send(e);
   }
