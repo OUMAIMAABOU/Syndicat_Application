@@ -1,5 +1,5 @@
-import SideBar from "../Component/Login/Admin/SideBar";
-import NavBar from "../Component/Login/Admin/NavBar";
+import SideBar from "../Component/Admin/SideBar";
+import NavBar from "../Component/Admin/NavBar";
 export default function LayoutAdmin({ children }) {
   return (
     <>
@@ -8,7 +8,7 @@ export default function LayoutAdmin({ children }) {
         <div className="col-2">
           <SideBar />
         </div>
-        <div className="col-10">{children}</div>
+        <div className="col-9">{children}</div>
       </div>
     </>
   );

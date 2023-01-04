@@ -1,5 +1,4 @@
-import React from "react";
-
+import {GET} from '../../../Api/Axios'
 export default function Table() {
   return (
     <>
@@ -22,18 +21,28 @@ export default function Table() {
             <thead>
               <tr className="bg-dark merriweather " style={{ height: " 53px" }}>
                 <th></th>
-                <th style={{ color: "#90f5d7" }}>Nom </th>
+                <th style={{ color: "#90f5d7" }}>Numero </th>
+                <th style={{ color: "#90f5d7" }}>Adresse </th>
+                <th style={{ color: "#90f5d7" }}>Surface</th>
+                <th style={{ color: "#90f5d7" }}>Prix</th>               
+                <th style={{ color: "#90f5d7" }}>Loue</th>
+                <th style={{ color: "#90f5d7" }}>Client</th>
+
 
                 <th style={{ color: "#90f5d7" }}>Operation</th>
               </tr>
             </thead>
             <tbody className="fw-bold">
               <tr>
-                <td hidden data-target="id"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td></td>
                 <td></td>
 
-                <td className="d-flex  align-items-start">
+                <td className="d-flex align-items-start">
                   <button
                     className="btn btn-outline-info btn-lg ms-2"
                     data-bs-toggle="modal"
