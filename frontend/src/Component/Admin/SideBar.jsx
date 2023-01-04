@@ -14,9 +14,7 @@ export default function SideBar() {
 
             <div className="text-center " />
             <hr className=""></hr>
-            <span className="fs-4 merriweather text-white mt-5 mx-3 ">
-              OUMAIMA
-            </span>
+           
             <a
               href="#"
               className="list-group-item mx-5 border-0  merriweather bg-transparent mt-5"

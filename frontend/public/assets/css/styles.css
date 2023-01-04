@@ -1,7 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Redressed&family=Merriweather:wght@300;400;700&display=swap');
 
 
+.cascading-right {
+    margin-right: -50px;
+  }
 
+  @media (max-width: 991.98px) {
+    .cascading-right {
+      margin-right: 0;
+    }
+  }
 
 .redressed {
 	font-family: 'Redressed', cursive;

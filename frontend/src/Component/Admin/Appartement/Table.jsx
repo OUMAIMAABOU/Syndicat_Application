@@ -1,4 +1,5 @@
 import {GET} from '../../../Api/Axios'
+
 export default function Table() {
   return (
     <>
@@ -9,14 +10,13 @@ export default function Table() {
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
           >
-            {" "}
-            +{" "}
+           
           </a>
         </div>
         <div className="table-responsive">
           <table
             className="table table-striped table align-middle"
-            id="agentHotel"
+            striped bordered hover
           >
             <thead>
               <tr className="bg-dark merriweather " style={{ height: " 53px" }}>
