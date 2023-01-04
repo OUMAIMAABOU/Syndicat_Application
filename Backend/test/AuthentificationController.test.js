@@ -1,6 +1,5 @@
 const supertest = require('supertest')
-const app = require('../server');
-describe('Login function', () => {
+module.exports=app => describe('Login function', () => {
   it('login', async () => {
     const res = await supertest(app)
       .post('/api/auth/login')

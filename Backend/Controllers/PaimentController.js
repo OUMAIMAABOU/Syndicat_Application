@@ -1,6 +1,8 @@
 const Paiment = require("../Models/PaimentModel");
 const Appratemen = require("../Models/AppratementModel");
 
+
+// method : post => url : /api/paiment/create_paiment =>acces : Private
 exports.CreatePaiment = async (req, res) => {
   try {
     const { body } = req; 
@@ -11,6 +13,7 @@ exports.CreatePaiment = async (req, res) => {
   }
 };
 
+// method : put => url : /api/paiment/update_paiment/:id =>acces : Private
 exports.UpdatePaiment = async (req, res) => {
   try {
     const { body } = req;
@@ -21,9 +24,11 @@ exports.UpdatePaiment = async (req, res) => {
     res.status(400).send(e);
   }
 };
+
+// method : get => url : /api/paiment/show_paiment =>acces : Private
   exports.ShowPaiment=async(_,res)=>{
     try{
-      res.json(await Paiment.find().populate({path:'appartementid', model: Appratemen}))
+      res.status(200).json(await Paiment.find().populate({path:'appartementid', model: Appratemen}))
     }catch(e){
       res.status(400).send(e);
     }

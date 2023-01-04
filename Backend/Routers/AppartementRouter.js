@@ -5,5 +5,5 @@ module.exports=AppartementRouter=>{
     router.delete('/deleteAppartements/:id',Appartement.DeleteAppartement)
     router.put('/modifierAppartement/:id',Appartement.UpdateAppartement)
     router.get('/showAppartements',Appartement.ShowAppartement)
-    AppartementRouter.use('/api/auth/',router)
+    AppartementRouter.use('/api/appartement',router)
 }

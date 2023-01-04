@@ -1,6 +1,7 @@
 const Appartement = require("../Models/AppratementModel");
 const Client =require("../Models/ClientModel")
 
+// // method : post => url : /api/appartement/CreateAppartement =>acces : Private
 exports.CreateAppartement = async (req, res) => {
   try {
     const { body } = req;
@@ -15,6 +16,7 @@ exports.CreateAppartement = async (req, res) => {
   }
 };
 
+// // method : put => url : /api/appartement/modifierAppartement/:id =>acces : Private
 exports.UpdateAppartement=async(req,res)=>{
   try{
 const { body}=req;
@@ -26,6 +28,7 @@ if(await Appartement.updateOne({_id:req.params.id},{...body})) res.status(200).s
   }
 }
 
+// method : delete => url : /api/appartement/deleteAppartements/:id =>acces : Private
 exports.DeleteAppartement = async (req, res) => {
   try {
     if(await Appartement.deleteOne({_id:req.params.id}))  res.status(200).send("delete");
@@ -33,9 +36,11 @@ exports.DeleteAppartement = async (req, res) => {
     res.status(400).send(e);
   }
 };
+
+ // method : get => url : /api/appartement/showAppartements =>acces : Private
  exports.ShowAppartement=async(_,res)=>{
   try{
-    res.json(await Appartement.find().populate({path:"client_id",model:Client}))
+    res.status(200).json(await Appartement.find().populate({path:"client_id",model:Client}))
   }catch(e){
     res.status(400).send(e);
   }

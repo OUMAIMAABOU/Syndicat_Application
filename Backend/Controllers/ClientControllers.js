@@ -1,5 +1,6 @@
 const Client = require("../Models/ClientModel");
 
+// method : post => url : api/client/CreateAppartement =>acces : Private
 exports.CreateClient = async (req, res) => {
   try {
     const { body } = req;
@@ -14,6 +15,7 @@ exports.CreateClient = async (req, res) => {
   }
 };
 
+// method : put => url : api/client/update_client/:id =>acces : Private
 exports.UpdateClient = async (req, res) => {
   try {
     const { body } = req;
@@ -24,6 +26,7 @@ exports.UpdateClient = async (req, res) => {
   }
 };
 
+// method : delete => url : api/client/delete_client/:id =>acces : Private
 exports.DeleteClient = async (req, res) => {
     try {
       if(await Client.deleteOne({_id:req.params.id}))  res.status(200).send("delete");
@@ -31,9 +34,11 @@ exports.DeleteClient = async (req, res) => {
       res.status(400).send(e);
     }
   };
+
+  // method : get => url : /api/client/show_client =>acces : Private
   exports.ShowClient=async(_,res)=>{
     try{
-      res.json(await Client.find())
+      res.status(200).json(await Client.find())
     }catch(e){
       res.status(400).send(e);
     }
