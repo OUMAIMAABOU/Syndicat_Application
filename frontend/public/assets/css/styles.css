@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Redressed&family=Merriweather:wght@300;400;700&display=swap');
+
+
+
+
+.redressed {
+	font-family: 'Redressed', cursive;
+}
+
+.merriweather {
+	font-family: 'Merriweather', serif;
+}
+
+
+
+.bg{
+    background: black;
+    border-radius: 12px;
+    padding: 39px 9px;
+	
+}
+
+
+.color{
+color: "#90f5d7";
+}
+
+
