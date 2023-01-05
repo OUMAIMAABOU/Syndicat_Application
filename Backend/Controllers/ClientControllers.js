@@ -19,8 +19,9 @@ exports.CreateClient = async (req, res) => {
 exports.UpdateClient = async (req, res) => {
   try {
     const { body } = req;
-    if (await Client.updateOne({ _id: req.params.id }, { ...body }))
+    if ((await Client.updateOne({ _id: req.params.id }, { ...body })).modifiedCount)
       res.status(200).send("update");
+      else res.status(400).send("not update");
   } catch (e) {
     res.status(400).send(e);
   }
@@ -29,7 +30,9 @@ exports.UpdateClient = async (req, res) => {
 // method : delete => url : api/client/delete_client/:id =>acces : Private
 exports.DeleteClient = async (req, res) => {
     try {
-      if(await Client.deleteOne({_id:req.params.id}))  res.status(200).send("delete");
+      if((await Client.deleteOne({_id:req.params.id})).deletedCount)  res.status(200).send("delete");
+      else res.status(400).send("not delete")
+
     } catch (e) {
       res.status(400).send(e);
     }

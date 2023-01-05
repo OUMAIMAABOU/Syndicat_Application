@@ -20,8 +20,8 @@ exports.CreateAppartement = async (req, res) => {
 exports.UpdateAppartement=async(req,res)=>{
   try{
 const { body}=req;
-if(await Appartement.updateOne({_id:req.params.id},{...body})) res.status(200).send("update")
-
+if((await Appartement.updateOne({_id:req.params.id},{...body})).modifiedCount) res.status(200).send("update")
+else res.status(400).send("not update");
   }catch(e){
     res.status(400).send(e);
 
@@ -31,7 +31,9 @@ if(await Appartement.updateOne({_id:req.params.id},{...body})) res.status(200).s
 // method : delete => url : /api/appartement/deleteAppartements/:id =>acces : Private
 exports.DeleteAppartement = async (req, res) => {
   try {
-    if(await Appartement.deleteOne({_id:req.params.id}))  res.status(200).send("delete");
+    if((await Appartement.deleteOne({_id:req.params.id})).deletedCount)  res.status(200).send("delete");
+    else res.status(400).send("not delete");
+
   } catch (e) {
     res.status(400).send(e);
   }
