@@ -20,8 +20,8 @@ exports.UpdateClient = async (req, res) => {
   try {
     const { body } = req;
     if ((await Client.updateOne({ _id: req.params.id }, { ...body })).modifiedCount)
-      res.status(200).send("update");
-      else res.status(400).send("not update");
+      res.status(200).send("The Client was Updated successfully");
+      else res.status(400).send("The Client wasn't Updated successfully");
   } catch (e) {
     res.status(400).send(e);
   }
@@ -30,8 +30,8 @@ exports.UpdateClient = async (req, res) => {
 // method : delete => url : api/client/delete_client/:id =>acces : Private
 exports.DeleteClient = async (req, res) => {
     try {
-      if((await Client.deleteOne({_id:req.params.id})).deletedCount)  res.status(200).send("delete");
-      else res.status(400).send("not delete")
+      if((await Client.deleteOne({_id:req.params.id})).deletedCount)  res.status(200).send("The Client was Deleted successfully");
+      else res.status(400).send("The Client wasn't Deleted successfully")
 
     } catch (e) {
       res.status(400).send(e);

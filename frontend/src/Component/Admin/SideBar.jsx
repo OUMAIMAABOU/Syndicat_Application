@@ -35,7 +35,7 @@ export default function SideBar() {
             </Link>
 
             <Link
-              to="/Competence"
+              to="/paiment"
               className="list-group-item mx-5 merriweather border-0 bg-transparent rounded-3 mt-5"
             >
               <span style={{ color: "white" }}>
@@ -43,7 +43,7 @@ export default function SideBar() {
               </span>
             </Link>
             <Link
-              to="/Experience"
+              to="/client"
               className="list-group-item mx-5 merriweather border-0 bg-transparent rounded-3 mt-5"
             >
               <span style={{ color: "white" }}>
