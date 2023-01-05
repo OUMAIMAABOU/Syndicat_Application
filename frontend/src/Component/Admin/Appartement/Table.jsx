@@ -2,6 +2,8 @@ import {GET,DELETE} from '../../../Api/Axios'
 import { useEffect,useState } from 'react';
 export default function Table() {
   const [Appartements,SetAppartement]=useState([])
+  const [Success,SetSuccess]=useState()
+  const [Error,SetError]=useState()
   useEffect(()=>{
     GET('appartement/showAppartements').then(res=>{
       SetAppartement(res.data)
@@ -9,7 +11,16 @@ export default function Table() {
     })
   }, [])
 
-
+  const deleteFunction = (id,e) => {
+    e.preventDefault();
+    DELETE(`appartement/deleteAppartements/${id}`)
+      .then((res) => {
+          if(res.status==200) SetSuccess(res.data)
+          else SetError(res.data)
+        window.location.reload(false);
+      })
+      .catch((e) => console.log(e));
+  };
   return (
     <>
       <div className="table-wrapper">
@@ -22,6 +33,8 @@ export default function Table() {
            
           </a>
         </div>
+        {Success && <div class="alert alert-success" role="alert">{Success}</div>}
+        {Error && <div class="alert alert-danger" role="alert">{Error}</div>}
         <div className="table-responsive">
           <table
             className="table table-striped table align-middle"
@@ -62,7 +75,7 @@ export default function Table() {
                   <button
                     className="btn btn-outline-danger btn-lg ms-2"
                     data-toggle="modal"
-
+                    onClick={(e) => deleteFunction(appartement._id,e)}
                   >
                     <img src="https://img.icons8.com/color/20/000000/delete-forever.png" />
                   </button>

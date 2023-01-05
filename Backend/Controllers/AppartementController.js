@@ -31,8 +31,8 @@ else res.status(400).send("not update");
 // method : delete => url : /api/appartement/deleteAppartements/:id =>acces : Private
 exports.DeleteAppartement = async (req, res) => {
   try {
-    if((await Appartement.deleteOne({_id:req.params.id})).deletedCount)  res.status(200).send("delete");
-    else res.status(400).send("not delete");
+    if((await Appartement.deleteOne({_id:req.params.id})).deletedCount)  res.status(200).send("The apartment was Deleted successfully.");
+    else res.status(400).send("The apartment wasn't Deleted");
 
   } catch (e) {
     res.status(400).send(e);
