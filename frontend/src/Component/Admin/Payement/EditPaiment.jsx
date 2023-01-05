@@ -3,23 +3,23 @@ import { PUT } from "../../../Api/Axios";
 import Model from "../ModelEdit";
 import Form from "./Form";
 
-export default function EditClient(props) {
-  const [Client, SetClient] = useState([]);
+export default function EditPaiment(props) {
+  const [Paiment, SetPaiment] = useState([]);
   useEffect(() => {
-    SetClient(props.editeClient);
-    console.log(props.editeClient);
-  }, [props.editeClient]);
+    SetPaiment(props.editePaiment);
+    console.log(props.editePaiment);
+  }, [props.editePaiment]);
 
   const handleChange = (e) => {
-    SetClient({
-      ...Client,
+    SetPaiment({
+      ...Paiment,
       [e.target.name]: e.target.value,
     });
   };
   const handleSubmit = (e) => {
     try {
       e.preventDefault();
-      PUT(`client/${Client._id}`, Client).then((res) => {
+      PUT(`paiment/${Paiment._id}`, Paiment).then((res) => {
         window.location.reload(false);
       });
     } catch (e) {
@@ -29,7 +29,7 @@ export default function EditClient(props) {
   return (
     <>
       <Model>
-        <Form onChange={handleChange} Submit={handleSubmit} fullname={Client.fullname} CIN={Client.CIN} tele={Client.tele} />
+        <Form onChange={handleChange} Submit={handleSubmit} prix={Paiment.prix} Date={Paiment.Date} appartement={Paiment.appartementid} />
       </Model>
     </>
   );

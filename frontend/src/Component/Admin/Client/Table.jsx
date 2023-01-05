@@ -4,11 +4,11 @@ import AddClient from './AddClient';
 import EditClient from './EditClient';
 export default function Table() {
   const [Client,SetClient]=useState([])
-  const [Edite,SetEdite]=useState({})
+  const [Edite,SetEdite]=useState([])
   const [Success,SetSuccess]=useState()
   const [Error,SetError]=useState()
   useEffect(()=>{
-    GET('client/show_client').then(res=>{
+    GET('client').then(res=>{
       SetClient(res.data)
       console.log(res.data)
     })
@@ -16,7 +16,7 @@ export default function Table() {
 
   const deleteFunction = (id,e) => {
     e.preventDefault();
-    DELETE(`client/delete_client/${id}`)
+    DELETE(`client/${id}`)
       .then((res) => {
           if(res.status==200) SetSuccess(res.data)
           else SetError(res.data)

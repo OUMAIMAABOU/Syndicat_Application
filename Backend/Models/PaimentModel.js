@@ -8,7 +8,7 @@ const paiment = new mongoose.Schema(
     required: true
   }, 
   Date:{
-    type: [Date],
+    type: Date,
     required: true
   },
   appartementid:{

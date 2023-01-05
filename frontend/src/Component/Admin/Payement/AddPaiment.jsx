@@ -2,7 +2,7 @@ import Model from "../Model";
 import Form from "./Form";
 import { useState } from "react";
 import { POST } from "../../../Api/Axios";
-export default function AddClient() {
+export default function AddPaiment() {
   const [Data, SetData] = useState({});
   const handleChange = (e) => {
     SetData({
@@ -14,7 +14,7 @@ export default function AddClient() {
   const handleSubmit = (e) => {
     try {
       e.preventDefault();
-      POST("client", Data).then((res) => {
+      POST("paiment", Data).then((res) => {
         console.log(res.data)
         // window.location.reload(false);
       });

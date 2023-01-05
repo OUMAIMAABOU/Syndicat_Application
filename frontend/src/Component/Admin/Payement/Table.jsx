@@ -1,12 +1,15 @@
-import {GET,DELETE} from '../../../Api/Axios'
+import {GET} from '../../../Api/Axios'
 import { useEffect,useState } from 'react';
+import AddPaiment from './AddPaiment';
+import EditPaiment from './EditPaiment';
 export default function Table() {
   const [Payements,SetPayement]=useState([])
   const [Success,SetSuccess]=useState()
   const [Error,SetError]=useState()
+  const [Edite,SetEdite]=useState([])
 
   useEffect(()=>{
-    GET('paiment/show_paiment').then(res=>{
+    GET('paiment').then(res=>{
       SetPayement(res.data)
       console.log(res.data)
     })
@@ -17,12 +20,12 @@ export default function Table() {
     <>
       <div className="table-wrapper">
         <div className="">
-          <a
-            className="btn btn-order  btn-lg fs-3 mb-1 mx-4 rounded-3 merriweather"
+        <a
+            className="btn btn-order btn-outline-dark btn-lg fs-3 mb-1 mx-4 rounded-3 merriweather"
             data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
+            data-bs-target="#AddModel"
           >
-           
+           +
           </a>
         </div>
         {Success && <div class="alert alert-success" role="alert">{Success}</div>}
@@ -58,6 +61,7 @@ export default function Table() {
                     className="btn btn-outline-info btn-lg ms-2"
                     data-bs-toggle="modal"
                     data-bs-target="#editModal"
+                    onClick={()=>SetEdite(payement)}
                   >
                     <img src="https://img.icons8.com/fluency/20/000000/edit-user-female.png" />
                   </button>
@@ -76,6 +80,8 @@ export default function Table() {
           </table>
         </div>
       </div>
+      <AddPaiment />
+      <EditPaiment editePaiment={Edite}/>
     </>
   );
 }

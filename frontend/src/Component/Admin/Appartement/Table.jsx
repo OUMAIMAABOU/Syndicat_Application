@@ -5,7 +5,7 @@ export default function Table() {
   const [Success,SetSuccess]=useState()
   const [Error,SetError]=useState()
   useEffect(()=>{
-    GET('appartement/showAppartements').then(res=>{
+    GET('appartement').then(res=>{
       SetAppartement(res.data)
       console.log(res.data)
     })
@@ -13,7 +13,7 @@ export default function Table() {
 
   const deleteFunction = (id,e) => {
     e.preventDefault();
-    DELETE(`appartement/deleteAppartements/${id}`)
+    DELETE(`appartement/${id}`)
       .then((res) => {
           if(res.status==200) SetSuccess(res.data)
           else SetError(res.data)
@@ -25,12 +25,12 @@ export default function Table() {
     <>
       <div className="table-wrapper">
         <div className="">
-          <a
-            className="btn btn-order  btn-lg fs-3 mb-1 mx-4 rounded-3 merriweather"
+        <a
+            className="btn btn-order btn-outline-dark btn-lg fs-3 mb-1 mx-4 rounded-3 merriweather"
             data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
+            data-bs-target="#AddModel"
           >
-           
+           +
           </a>
         </div>
         {Success && <div class="alert alert-success" role="alert">{Success}</div>}
