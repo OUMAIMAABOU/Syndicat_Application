@@ -1,7 +1,10 @@
 import {GET,DELETE} from '../../../Api/Axios'
 import { useEffect,useState } from 'react';
+import AddAppartement from './AddAppartement';
+import EditAppartement from './EditAppartement';
 export default function Table() {
   const [Appartements,SetAppartement]=useState([])
+  const [edite,SetEdite]=useState([])
   const [Success,SetSuccess]=useState()
   const [Error,SetError]=useState()
   useEffect(()=>{
@@ -58,7 +61,7 @@ export default function Table() {
                 <td>{appartement.Adresse}</td>
                 <td>{appartement.numero}</td>
                 <td>{appartement.surface}</td>
-                <td>{appartement.prix}</td>
+                <td>{appartement.prix}DH</td>
                 <td>{appartement.loue}</td>
                <td> {appartement.client_id?.fullname && (<>{appartement.client_id.fullname}</>)}</td>
                 
@@ -68,6 +71,7 @@ export default function Table() {
                     className="btn btn-outline-info btn-lg ms-2"
                     data-bs-toggle="modal"
                     data-bs-target="#editModal"
+                    onClick={()=>SetEdite(appartement)}
                   >
                     <img src="https://img.icons8.com/fluency/20/000000/edit-user-female.png" />
                   </button>
@@ -87,6 +91,8 @@ export default function Table() {
           </table>
         </div>
       </div>
+      <AddAppartement />
+      <EditAppartement editeAppartement={edite}/>
     </>
   );
 }
