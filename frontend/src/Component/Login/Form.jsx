@@ -18,7 +18,7 @@ export default function Form() {
       e.preventDefault();
       POST("auth/login", Data).then((res) => {
         if(res.data) {
-          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("token", res.data.token);
           navig("/appartement");
       }
       });
