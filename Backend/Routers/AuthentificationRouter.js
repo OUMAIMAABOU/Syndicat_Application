@@ -4,5 +4,5 @@ module.exports = app =>
 {    
   router.post('/register',Authentification.Register)
   router.post('/login',Authentification.Login)
-  app.use('/api/auth/', router);
+  app.use('/api/auth', router);
 };
