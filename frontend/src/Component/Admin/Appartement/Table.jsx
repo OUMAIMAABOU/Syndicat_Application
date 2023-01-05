@@ -1,6 +1,15 @@
-import {GET} from '../../../Api/Axios'
-
+import {GET,DELETE} from '../../../Api/Axios'
+import { useEffect,useState } from 'react';
 export default function Table() {
+  const [Appartements,SetAppartement]=useState([])
+  useEffect(()=>{
+    GET('appartement/showAppartements').then(res=>{
+      SetAppartement(res.data)
+      console.log(res.data)
+    })
+  }, [])
+
+
   return (
     <>
       <div className="table-wrapper">
@@ -16,31 +25,30 @@ export default function Table() {
         <div className="table-responsive">
           <table
             className="table table-striped table align-middle"
-            striped bordered hover
+            striped="true" bordered="true" hover="true"
           >
             <thead>
               <tr className="bg-dark merriweather " style={{ height: " 53px" }}>
-                <th></th>
-                <th style={{ color: "#90f5d7" }}>Numero </th>
                 <th style={{ color: "#90f5d7" }}>Adresse </th>
+                <th style={{ color: "#90f5d7" }}>Numero </th>
                 <th style={{ color: "#90f5d7" }}>Surface</th>
                 <th style={{ color: "#90f5d7" }}>Prix</th>               
                 <th style={{ color: "#90f5d7" }}>Loue</th>
                 <th style={{ color: "#90f5d7" }}>Client</th>
-
-
                 <th style={{ color: "#90f5d7" }}>Operation</th>
               </tr>
             </thead>
             <tbody className="fw-bold">
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+            {Appartements.map((appartement,key)=>{
+              return(
+              <tr key={key}>
+                <td>{appartement.Adresse}</td>
+                <td>{appartement.numero}</td>
+                <td>{appartement.surface}</td>
+                <td>{appartement.prix}</td>
+                <td>{appartement.loue}</td>
+               <td> {appartement.client_id?.fullname && (<>{appartement.client_id.fullname}</>)}</td>
+                
 
                 <td className="d-flex align-items-start">
                   <button
@@ -54,11 +62,14 @@ export default function Table() {
                   <button
                     className="btn btn-outline-danger btn-lg ms-2"
                     data-toggle="modal"
+
                   >
                     <img src="https://img.icons8.com/color/20/000000/delete-forever.png" />
                   </button>
                 </td>
               </tr>
+               )
+            })}
             </tbody>
           </table>
         </div>
