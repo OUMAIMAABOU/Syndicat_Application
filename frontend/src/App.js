@@ -1,5 +1,4 @@
 // import './App.css';
-import '/node_modules/bootstrap/dist/css/bootstrap.css'
 import{Route,Routes,BrowserRouter} from 'react-router-dom'
 import Appartement from './Page/Admin/Appartement';
 import Client from './Page/Admin/Client';

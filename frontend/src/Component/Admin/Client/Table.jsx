@@ -1,7 +1,10 @@
 import {GET,DELETE} from '../../../Api/Axios'
 import { useEffect,useState } from 'react';
+import AddClient from './AddClient';
+import EditClient from './EditClient';
 export default function Table() {
   const [Client,SetClient]=useState([])
+  const [Edite,SetEdite]=useState({})
   const [Success,SetSuccess]=useState()
   const [Error,SetError]=useState()
   useEffect(()=>{
@@ -26,15 +29,15 @@ export default function Table() {
       <div className="table-wrapper">
         <div className="">
           <a
-            className="btn btn-order  btn-lg fs-3 mb-1 mx-4 rounded-3 merriweather"
+            className="btn btn-order btn-outline-dark btn-lg fs-3 mb-1 mx-4 rounded-3 merriweather"
             data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
+            data-bs-target="#AddModel"
           >
-           
+           +
           </a>
         </div>
-        {Success && <div class="alert alert-success" role="alert">{Success}</div>}
-        {Error && <div class="alert alert-danger" role="alert">{Error}</div>}
+        {Success && <div className="alert alert-success" role="alert">{Success}</div>}
+        {Error && <div className="alert alert-danger" role="alert">{Error}</div>}
         <div className="table-responsive">
           <table
             className="table table-striped table align-middle"
@@ -60,6 +63,7 @@ export default function Table() {
                     className="btn btn-outline-info btn-lg ms-2"
                     data-bs-toggle="modal"
                     data-bs-target="#editModal"
+                    onClick={()=>SetEdite(client)}
                   >
                     <img src="https://img.icons8.com/fluency/20/000000/edit-user-female.png" />
                   </button>
@@ -78,7 +82,10 @@ export default function Table() {
             </tbody>
           </table>
         </div>
+        <EditClient editeClient={Edite}/>
+
       </div>
+      <AddClient />
     </>
   );
 }
