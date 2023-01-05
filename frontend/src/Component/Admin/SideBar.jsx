@@ -26,7 +26,7 @@ export default function SideBar() {
               </span>
             </a>
             <Link
-              to="/Projet"
+              to="/appartement"
               className="list-group-item  mx-5 border-0 merriweather bg-transparent mt-5 "
             >
               <span style={{ color: "white" }}>

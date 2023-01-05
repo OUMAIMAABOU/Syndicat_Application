@@ -1,12 +1,13 @@
 import {GET,DELETE} from '../../../Api/Axios'
 import { useEffect,useState } from 'react';
 export default function Table() {
-  const [Appartements,SetAppartement]=useState([])
+  const [Payements,SetPayement]=useState([])
   const [Success,SetSuccess]=useState()
   const [Error,SetError]=useState()
+
   useEffect(()=>{
-    GET('appartement/showAppartements').then(res=>{
-      SetAppartement(res.data)
+    GET('paiment/show_paiment').then(res=>{
+      SetPayement(res.data)
       console.log(res.data)
     })
   }, [])
@@ -33,25 +34,23 @@ export default function Table() {
           >
             <thead>
               <tr className="bg-dark merriweather " style={{ height: " 53px" }}>
-                <th style={{ color: "#90f5d7" }}>Adresse </th>
-                <th style={{ color: "#90f5d7" }}>Numero </th>
-                <th style={{ color: "#90f5d7" }}>Surface</th>
-                <th style={{ color: "#90f5d7" }}>Prix</th>               
-                <th style={{ color: "#90f5d7" }}>Loue</th>
-                <th style={{ color: "#90f5d7" }}>Client</th>
+                <th style={{ color: "#90f5d7" }}>Appartement </th>
+                <th style={{ color: "#90f5d7" }}>Prix </th>
+                <th style={{ color: "#90f5d7" }}>Date</th>
+                <th style={{ color: "#90f5d7" }}>Client</th>               
+      
                 <th style={{ color: "#90f5d7" }}>Operation</th>
               </tr>
             </thead>
             <tbody className="fw-bold">
-            {Appartements.map((appartement,key)=>{
+            {Payements.map((payement,key)=>{
               return(
               <tr key={key}>
-                <td>{appartement.Adresse}</td>
-                <td>{appartement.numero}</td>
-                <td>{appartement.surface}</td>
-                <td>{appartement.prix}</td>
-                <td>{appartement.loue}</td>
-               <td> {appartement.client_id?.fullname && (<>{appartement.client_id.fullname}</>)}</td>
+                {/* <td>{payement.appartementid?.Adresse} &&(<>{payement.appartementid.Adresse}</>)</td> */}
+                <td>{payement.appartementid?.Adresse}</td>
+                <td>{payement.prix}</td>
+                <td>{payement.Date}</td>
+               <td> {payement.appartementid?.client_id?.fullname}</td>
                 
 
                 <td className="d-flex align-items-start">

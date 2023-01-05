@@ -13,7 +13,8 @@ const paiment = new mongoose.Schema(
   },
   appartementid:{
     type: mongoose.Schema.Types.ObjectId,
-     ref: 'appartements'
+     ref: 'appartements',
+     required: true
     }
 }
 )
