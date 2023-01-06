@@ -1,10 +1,11 @@
-import {POST} from '../../Api/Axios'
-import { useState } from 'react';
+import { POST } from "../../Api/Axios";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Form() {
   const [Data, SetData] = useState({});
   const navig = useNavigate();
+  const [Error, SetError] = useState();
 
   const handleChange = (e) => {
     SetData({
@@ -17,10 +18,12 @@ export default function Form() {
     try {
       e.preventDefault();
       POST("auth/login", Data).then((res) => {
-        if(res.data) {
+        if (res.status == 200) {
           localStorage.setItem("token", res.data.token);
           navig("/appartement");
-      }
+        } else {
+          SetError("invalide data");
+        }
       });
     } catch (e) {
       console.log(e);
@@ -28,12 +31,17 @@ export default function Form() {
   };
   return (
     <form onSubmit={handleSubmit}>
+      {Error && (
+        <div class="alert alert-danger" role="alert">
+          {Error}
+        </div>
+      )}
       <h3>Sign In</h3>
       <div className="mb-3">
         <label>Email address</label>
         <input
           type="email"
-          name='email'
+          name="email"
           className="form-control"
           placeholder="Enter email"
           onChange={handleChange}
@@ -43,13 +51,13 @@ export default function Form() {
         <label>Password</label>
         <input
           type="password"
-          name='password'
+          name="password"
           className="form-control"
           placeholder="Enter password"
           onChange={handleChange}
         />
       </div>
-     
+
       <div className="d-grid">
         <button type="submit" className="btn btn-primary">
           Submit

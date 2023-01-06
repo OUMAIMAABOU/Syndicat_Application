@@ -15,8 +15,7 @@ export default function AddPaiment() {
     try {
       e.preventDefault();
       POST("paiment", Data).then((res) => {
-        console.log(res.data)
-        // window.location.reload(false);
+        window.location.reload(false);
       });
     } catch (e) {
       console.log(e);

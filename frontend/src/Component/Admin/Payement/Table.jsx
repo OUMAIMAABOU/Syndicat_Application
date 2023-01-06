@@ -2,6 +2,7 @@ import {GET} from '../../../Api/Axios'
 import { useEffect,useState } from 'react';
 import AddPaiment from './AddPaiment';
 import EditPaiment from './EditPaiment';
+import Facteur from './Facteur';
 export default function Table() {
   const [Payements,SetPayement]=useState([])
   const [Success,SetSuccess]=useState()
@@ -66,11 +67,15 @@ export default function Table() {
                     <img src="https://img.icons8.com/fluency/20/000000/edit-user-female.png" />
                   </button>
 
+                
                   <button
-                    className="btn btn-outline-danger btn-lg ms-2"
+                    className="btn btn-outline-success btn-lg ms-2"
                     data-toggle="modal"
+                    onClick={()=>SetEdite(payement)
+                    }
                   >
-                    <img src="https://img.icons8.com/color/20/000000/delete-forever.png" />
+                    <img src="https://files.fm/thumb_show.php?i=gmfwgaz8t" width={15} />
+
                   </button>
                 </td>
               </tr>
@@ -82,6 +87,7 @@ export default function Table() {
       </div>
       <AddPaiment />
       <EditPaiment editePaiment={Edite}/>
+      {/* <Facteur Facteur={Edite}/> */}
     </>
   );
 }
