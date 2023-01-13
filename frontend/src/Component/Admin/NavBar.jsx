@@ -1,11 +1,15 @@
+import { useContext } from "react";
+import { UserContext } from '../../Context/UseContext';
 
 export default function NavBar() {
+  const {value} =useContext(UserContext)
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-dark">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
-            OUMAIMA ABOU EL HAITAM{" "}
+          {value}
           </a>
           <button
             className="navbar-toggler"

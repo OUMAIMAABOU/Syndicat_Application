@@ -1,5 +1,5 @@
 import {GET,DELETE} from '../../../Api/Axios'
-import { useEffect,useState } from 'react';
+import { useEffect,useState} from 'react';
 import AddClient from './AddClient';
 import EditClient from './EditClient';
 export default function Table() {

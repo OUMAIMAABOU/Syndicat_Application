@@ -1,6 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link,useNavigate} from "react-router-dom";
 
 export default function SideBar() {
+  const navigate = useNavigate();
+  function logOut() {
+    localStorage.clear();
+    navigate("/");
+  }
   return (
     <>
       <div className="d-flex justify-content-between border-bottom ">
@@ -73,7 +78,10 @@ export default function SideBar() {
                 type="submit"
                 name="logout"
                 className="list-group-item mx-5 border-0 merriweather bg-transparent  mt-5 mb-5 "
+                onClick={logOut}
+
               >
+
                 <span style={{ color: "white" }}>
                   <i className="fas fa-sign-out-alt">Logout </i>
                 </span>

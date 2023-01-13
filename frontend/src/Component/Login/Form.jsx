@@ -1,12 +1,13 @@
 import { POST } from "../../Api/Axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../Context/UseContext";
 
 export default function Form() {
   const [Data, SetData] = useState({});
   const navig = useNavigate();
   const [Error, SetError] = useState();
-
+  const { setValue } = useContext(UserContext);
   const handleChange = (e) => {
     SetData({
       ...Data,
@@ -20,6 +21,7 @@ export default function Form() {
       POST("auth/login", Data).then((res) => {
         if (res.status == 200) {
           localStorage.setItem("token", res.data.token);
+          setValue(res.data.username);
           navig("/appartement");
         } else {
           SetError("invalide data");

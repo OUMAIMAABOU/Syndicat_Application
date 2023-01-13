@@ -7,7 +7,6 @@ export default function EditClient(props) {
   const [Client, SetClient] = useState([]);
   useEffect(() => {
     SetClient(props.editeClient);
-    console.log(props.editeClient);
   }, [props.editeClient]);
 
   const handleChange = (e) => {

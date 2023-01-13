@@ -7,7 +7,6 @@ export default function EditAppartement(props) {
   const [Appartement, SetAppartement] = useState([]);
   useEffect(() => {
     SetAppartement(props.editeAppartement);
-    console.log(props.editeAppartement);
   }, [props.editeAppartement]);
 
   const handleChange = (e) => {

@@ -12,10 +12,10 @@ exports.Login = async (req, res) => {
       if (await bcryptjs.compare(req.body.password, users.password)) {
         localstorage('token', jwt.sign(payload,process.env.ACCESS_TOKEN,{expiresIn:"120m"}))
         res.status(200).json({token:localstorage('token'),username:users.fullname});
-      } else res.send("password invalide");
-    } else res.send("can't find user");
+      } else res.status(400).json("password invalide");
+    } else res.status(400).json("can't find user");
   } catch (e) {
-    return res.status(400).send({ message: e });
+    return res.status(400).json({ message: e });
   }
 };
 

@@ -7,7 +7,6 @@ export default function Form(props) {
   useEffect(()=>{
     GET('client').then(res=>{
       SetClient(res.data)
-      console.log(res.data)
     })
   },[])
   return (

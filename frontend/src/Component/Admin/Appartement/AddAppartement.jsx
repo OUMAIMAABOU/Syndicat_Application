@@ -15,7 +15,6 @@ export default function AddAppartement() {
     try {
       e.preventDefault();
       POST("appartement", Data).then((res) => {
-        console.log(res.data)
         window.location.reload(false);
       });
     } catch (e) {
