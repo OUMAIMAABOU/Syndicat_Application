@@ -9,6 +9,7 @@ import ReactToPrint from "react-to-print";
 export default function Table() {
   const componentRef = useRef();
   const [Payements, SetPayement] = useState([]);
+  const [Factures, SetFacture] = useState([]);
   const [Success, SetSuccess] = useState();
   const [Error, SetError] = useState();
   const [Edite, SetEdite] = useState([]);
@@ -78,14 +79,15 @@ export default function Table() {
                       >
                         <img src="https://img.icons8.com/fluency/20/000000/edit-user-female.png" />
                       </button>
-                  
 
-                      <PrintComponents
+                      <button
+                        onClick={() => SetFacture(payement)}
+                        >
+                         <PrintComponents
                         trigger={
-                          <button 
-                          className="btn btn-outline-success btn-lg ms-2"
-                          onClick={() => SetEdite(payement)}>
-                           
+                          <button
+                            className="btn btn-outline-success btn-lg ms-2"
+                          >
                             <img
                               src="https://files.fm/thumb_show.php?i=gmfwgaz8t"
                               width={15}
@@ -93,9 +95,12 @@ export default function Table() {
                           </button>
                         }
                         content={() => componentRef.current}
-                      >
-                        <Facteur ref={componentRef} Facteur={Edite} />
+                       >
+                             <Facteur ref={componentRef} Facteur={Factures} />
+
                       </PrintComponents>
+                      </button>
+                     
                     </td>
                   </tr>
                 );
@@ -106,6 +111,7 @@ export default function Table() {
       </div>
       <AddPaiment />
       <EditPaiment editePaiment={Edite} />
+
     </>
   );
 }

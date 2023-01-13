@@ -1,11 +1,6 @@
-import { useEffect, forwardRef,useState} from 'react';
+import { forwardRef } from 'react';
 
 const Facteur = forwardRef(( props, ref ) => {
-  const [factures,setFacture]=useState([])
-  useEffect(()=>{
-    setFacture(props.Facteur)
-    console.log(factures)
-  },[props.Facteur])
   return (
  
     <div className="card" ref={ref}>
@@ -32,7 +27,7 @@ const Facteur = forwardRef(( props, ref ) => {
                 <td>Adresse</td>
                 <td>
                   <i className="fas fa-dollar-sign"></i>{" "}
-                  {factures.appartementid?.Adresse}
+                  {props.Facteur.appartementid?.Adresse}
                 </td>
               </tr>
               <tr>
@@ -60,7 +55,7 @@ const Facteur = forwardRef(( props, ref ) => {
                 <td>Client</td>
                 <td>
                   <i className="fas fa-dollar-sign"></i>{" "}
-                  {/* {props.Facteur.appartementid?.client_id?.fullname} */}
+                  {props.Facteur.appartementid?.client_id?.fullname}
                 </td>
               </tr>
             </tbody>
@@ -76,7 +71,7 @@ const Facteur = forwardRef(( props, ref ) => {
           </p>
           <p className="fw-bold mt-3">
             Signature: <i className="fas fa-dollar-sign"></i>{" "}
-            {props.appartementid?.client_id?.fullname}
+            {props.Facteur.appartementid?.client_id?.fullname}
           </p>
         </div>
       </div>
