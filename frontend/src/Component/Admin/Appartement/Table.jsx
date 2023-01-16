@@ -10,7 +10,6 @@ export default function Table() {
   useEffect(()=>{
     GET('appartement').then(res=>{
       SetAppartement(res.data)
-      console.log(res.data)
     })
   }, [])
 
@@ -59,6 +58,7 @@ export default function Table() {
               return(
               <tr key={key}>
                 <td>{appartement.Adresse}</td>
+                {console.log(appartement.loue)}
                 <td>{appartement.numero}</td>
                 <td>{appartement.surface}</td>
                 <td>{appartement.prix}DH</td>

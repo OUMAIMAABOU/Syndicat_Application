@@ -27,7 +27,7 @@ export default function Form(props) {
         <div className="col-md-12">
           <span>Numero</span>
           <input
-            type="text"
+            type="number"
             name="numero"
             className="form-control"
             required
@@ -38,7 +38,7 @@ export default function Form(props) {
         <div className="col-md-12">
           <span>surface</span>
           <input
-            type="text"
+            type="number"
             name="surface"
             className="form-control"
             required
@@ -57,18 +57,7 @@ export default function Form(props) {
             onChange={props.onChange}
           />
         </div>
-        <div className="col-md-12">
-        <span>Loue</span>
-        <select
-          name="loue"
-          className="form-control text-dark  "
-          onChange={props.onChange}
-        >
-          <option value={props.loue}>--Please choose--</option>
-          <option value="true">true</option>
-          <option value="false">false</option>
-        </select>
-      </div>
+     
         <div className="col-md-12">
         <span>Client</span>
       
@@ -77,7 +66,7 @@ export default function Form(props) {
           className="form-control text-dark  "
           onChange={props.onChange}
         >
-          <option value={props.client}>--Please choose an Appartement--</option>
+          <option value=''>--Please choose an Appartement--</option>
           {Client.map((client)=>{
             return(
                <option value={client._id}>{client.fullname}</option>

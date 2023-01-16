@@ -7,7 +7,6 @@ export default function SideBar() {
     navigate("/");
   }
   return (
-    <>
       <div className="d-flex justify-content-between border-bottom ">
         <div className="d-flex m-3 " id="dashboard">
           <div className="bg" id="sidebar-dashboard">
@@ -90,6 +89,6 @@ export default function SideBar() {
           </div>
         </div>
       </div>
-    </>
+    
   );
 }

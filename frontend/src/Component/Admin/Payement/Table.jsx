@@ -4,7 +4,6 @@ import AddPaiment from "./AddPaiment";
 import EditPaiment from "./EditPaiment";
 import Facteur from "./Facteur";
 import PrintComponents from "react-print-components";
-import ReactToPrint from "react-to-print";
 
 export default function Table() {
   const componentRef = useRef();
@@ -17,11 +16,9 @@ export default function Table() {
   useEffect(() => {
     GET("paiment").then((res) => {
       SetPayement(res.data);
-      // console.log(res.data)
     });
   }, []);
 
-  // paiment/update_paiment  paiment/create_paiment    paiment/show_paiment
   return (
     <>
       <div className="table-wrapper">
@@ -65,9 +62,8 @@ export default function Table() {
               {Payements.map((payement, key) => {
                 return (
                   <tr key={key}>
-                    {/* <td>{payement.appartementid?.Adresse} &&(<>{payement.appartementid.Adresse}</>)</td> */}
                     <td>{payement.appartementid?.Adresse}</td>
-                    <td>{payement.prix}</td>
+                    <td>{payement.appartementid?.prix}</td>
                     <td>{payement.Date}</td>
                     <td> {payement.appartementid?.client_id?.fullname}</td>
                     <td className="d-flex align-items-start">
@@ -82,25 +78,22 @@ export default function Table() {
 
                       <button
                         onClick={() => SetFacture(payement)}
+                        className="border-0"
+                      >
+                        <PrintComponents
+                          trigger={
+                            <button className="btn btn-outline-success btn-lg ms-2">
+                              <img
+                                src="https://files.fm/thumb_show.php?i=gmfwgaz8t"
+                                width={15}
+                              />
+                            </button>
+                          }
+                          content={() => componentRef.current}
                         >
-                         <PrintComponents
-                        trigger={
-                          <button
-                            className="btn btn-outline-success btn-lg ms-2"
-                          >
-                            <img
-                              src="https://files.fm/thumb_show.php?i=gmfwgaz8t"
-                              width={15}
-                            />
-                          </button>
-                        }
-                        content={() => componentRef.current}
-                       >
-                             <Facteur ref={componentRef} Facteur={Factures} />
-
-                      </PrintComponents>
+                          <Facteur ref={componentRef} Facteur={Factures} />
+                        </PrintComponents>
                       </button>
-                     
                     </td>
                   </tr>
                 );
@@ -111,7 +104,6 @@ export default function Table() {
       </div>
       <AddPaiment />
       <EditPaiment editePaiment={Edite} />
-
     </>
   );
 }

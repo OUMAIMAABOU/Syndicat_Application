@@ -1,0 +1,60 @@
+body{
+    margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #e5e5e57e;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif!important;
+  }
+  .bg {
+    height: 89vh;
+    
+  }
+  #sidebar-dashboard {
+   min-height: 100%;
+   margin-left: -240px;
+  
+  }
+  
+  .list-group a:hover{
+      background: #00C1FE!important ;
+  }  
+  #sidebar-dashboard .list-group {
+     width: 240px;
+   }
+  #page-content-dashboard {
+     min-width: 100%;
+   }
+   #dashboard.toggled #sidebar-dashboard {
+     margin-left: 0;
+   }
+   #menu-toggle {
+     cursor: pointer;
+   }
+   
+  
+   .py-2 form button span{
+    font-size: 20%;
+  }
+  
+  
+   @media (min-width: 800px) {
+     #sidebar-dashboard {
+       margin-left: 0;
+     }
+     .py-2 form button span{
+      font-size: 100%;
+    }
+   
+     #page-content-dashboard {
+       min-width: 0;
+       width: 100%;
+     }
+   
+     #dashboard.toggled #sidebar-dashboard {
+       margin-left: -240px;
+     }
+   }

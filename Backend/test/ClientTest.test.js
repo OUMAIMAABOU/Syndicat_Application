@@ -9,7 +9,7 @@ module.exports= app=> describe('Client test', () => {
         CIN: "SH193011",
         tele:"06808551",
       })
-    expect(res.statusCode).toEqual(400)
+    expect(res.statusCode).toEqual(200)
   })
 
   it('Delete Client', async () => {

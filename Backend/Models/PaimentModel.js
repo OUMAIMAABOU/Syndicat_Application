@@ -3,10 +3,6 @@ const mongoose = require("mongoose");
 
 const paiment = new mongoose.Schema(
 {
-  prix:{
-    type:Number,
-    required: true
-  }, 
   Date:{
     type: Date,
     required: true

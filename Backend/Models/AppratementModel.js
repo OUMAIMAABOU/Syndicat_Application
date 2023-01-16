@@ -11,7 +11,7 @@ const Appartement = new mongoose.Schema(
       unique: true,
       require: true,
     },
-    loue: Boolean,
+    loue: String,
     surface: String,
     prix: Number,
     client_id: {

@@ -7,10 +7,22 @@ module.exports=app=> describe('Appratement test', () => {
       .send({
         Adresse: "hay el amal 01 laayoune",
         numero: 12535,
-        loue:false,
         surface:"200m",
         prix:200,
-        client_id:"63b3efe9019b19b411eb4c55"
+        client_id:"63b726e43f2764b8d7cc2603"
+      })
+    expect(res.statusCode).toEqual(200)
+  })
+
+  it('Create Appartement', async () => {
+    const res = await supertest(app)
+      .post('/api/appartement/CreateAppartement')
+      .send({
+        Adresse: "hay el amal 01 laayoune",
+        numero: 3333,
+        surface:"200m",
+        prix:200,
+        client_id:"63b726e43f2764b8d7cc2603"
       })
     expect(res.statusCode).toEqual(400)
   })

@@ -2,14 +2,14 @@ import { useContext } from "react";
 import { UserContext } from '../../Context/UseContext';
 
 export default function NavBar() {
-  const {value} =useContext(UserContext)
-
+  const {value,setValue} =useContext(UserContext)
+    setValue(localStorage.getItem("username"))
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-          {value}
+          <a className="navbar-brand text-white" href="#">
+         Welcome {value}
           </a>
           <button
             className="navbar-toggler"

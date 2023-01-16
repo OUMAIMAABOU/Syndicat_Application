@@ -1,0 +1,43 @@
+version: '3'
+services:
+  front-end:
+    build: ./frontend
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend:/app
+    networks:
+     - livraison-networks
+  back-end:
+    build:
+      context: ./backend 
+    volumes:
+    - /app/node_modules 
+    - ./backend:/app 
+    ports:
+     - 8080:8080
+    networks:
+     - livraison-networks     
+    depends_on:
+     - mongodb
+  mongodb:
+    image: mongo
+    env_file:
+      - ./backend/.env  
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root2
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+     - "27017:27017"
+    networks:
+     - syndicat-networks
+    volumes:
+     - /data/db 
+networks:
+  livraison-networks:
+    driver: bridge
+volumes:
+  mongoose-data:
+   driver: local
+   driver_opts:
+      size: "10GiB"  

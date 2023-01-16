@@ -29,7 +29,7 @@ export default function EditPaiment(props) {
   return (
     <>
       <Model>
-        <Form onChange={handleChange} Submit={handleSubmit} prix={Paiment.prix} Date={Paiment.Date} appartement={Paiment.appartementid} />
+        <Form onChange={handleChange} Submit={handleSubmit} Date={Paiment.Date} appartement={Paiment.appartementid} />
       </Model>
     </>
   );

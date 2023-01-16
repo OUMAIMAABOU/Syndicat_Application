@@ -28,7 +28,7 @@ export default function EditAppartement(props) {
   return (
     <>
       <Model>
-        <Form onChange={handleChange} Submit={handleSubmit} Adresse={Appartement.Adresse} numero={Appartement.numero} prix={Appartement.prix} loue={Appartement.loue} client={Appartement.client_id} surface={Appartement.surface}/>
+        <Form onChange={handleChange} Submit={handleSubmit} Adresse={Appartement.Adresse} numero={Appartement.numero} prix={Appartement.prix}  client={Appartement.client_id} surface={Appartement.surface}/>
       </Model>
     </>
   );

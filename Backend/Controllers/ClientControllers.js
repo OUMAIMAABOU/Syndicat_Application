@@ -5,8 +5,8 @@ exports.CreateClient = async (req, res) => {
   try {
     const { body } = req;
     if (!await Client.findOne({ CIN: req.body.CIN })){
-       if (await Client.create({ ...body })) res.status(200).send("create");
-      else res.status(400).json("some thing worning");  
+       if (await Client.create({ ...body })) res.status(200).send("The Client was created successfully");
+      else res.status(400).json("The Client wasn't created successfully");  
     }
     else  res.status(400).send("already existe");
 

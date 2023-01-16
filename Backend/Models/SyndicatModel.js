@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 // create table user
 
 const Syndique = new mongoose.Schema(
@@ -14,6 +15,4 @@ const Syndique = new mongoose.Schema(
   },
   password:String,
 },{timestamps:true})
-
  module.exports= mongoose.model("syndique", Syndique);
-
