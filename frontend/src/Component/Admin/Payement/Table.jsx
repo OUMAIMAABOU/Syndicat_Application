@@ -89,9 +89,9 @@ export default function Table() {
                               />
                             </button>
                           }
-                          content={() => componentRef.current}
+                          // content={() => componentRef.current}
                         >
-                          <Facteur ref={componentRef} Facteur={Factures} />
+                          <Facteur Facteur={Factures} />
                         </PrintComponents>
                       </button>
                     </td>

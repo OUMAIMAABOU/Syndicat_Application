@@ -57,7 +57,18 @@ export default function Form(props) {
             onChange={props.onChange}
           />
         </div>
-     
+        <div className="col-md-12"> 
+         <span>Loue</span>
+        <select
+          name="loue"
+          className="form-control text-dark  "
+          onChange={props.onChange}
+        >
+          <option value={props.loue}>--Please choose--</option>
+          <option value="loue">loue</option>
+          <option value="no loue">no loue</option>
+        </select>
+      </div>
         <div className="col-md-12">
         <span>Client</span>
       

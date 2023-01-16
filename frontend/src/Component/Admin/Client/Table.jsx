@@ -45,7 +45,7 @@ export default function Table() {
           >
             <thead>
               <tr className="bg-dark merriweather " style={{ height: " 53px" }}>
-                <th style={{ color: "#90f5d7" }}>Full Name </th>
+                <th style={{ color: "#90f5d7" }}>FullName </th>
                 <th style={{ color: "#90f5d7" }}>CIN </th>
                 <th style={{ color: "#90f5d7" }}>Téléphone</th>
                 <th style={{ color: "#90f5d7" }}>Operation</th>

@@ -17,8 +17,8 @@ export default function Table() {
     e.preventDefault();
     DELETE(`appartement/${id}`)
       .then((res) => {
-          if(res.status==200) SetSuccess(res.data)
-          else SetError(res.data)
+          (res.status==200) ?SetSuccess(res.data):
+           SetError(res.data)
         window.location.reload(false);
       })
       .catch((e) => console.log(e));
@@ -58,7 +58,6 @@ export default function Table() {
               return(
               <tr key={key}>
                 <td>{appartement.Adresse}</td>
-                {console.log(appartement.loue)}
                 <td>{appartement.numero}</td>
                 <td>{appartement.surface}</td>
                 <td>{appartement.prix}DH</td>

@@ -5,6 +5,8 @@ import Form from "./Form";
 
 export default function EditPaiment(props) {
   const [Paiment, SetPaiment] = useState([]);
+  const [Error, SetError] = useState();
+  const [Success, SetSuccess] = useState();
   useEffect(() => {
     SetPaiment(props.editePaiment);
     console.log(props.editePaiment);
@@ -20,15 +22,22 @@ export default function EditPaiment(props) {
     try {
       e.preventDefault();
       PUT(`paiment/${Paiment._id}`, Paiment).then((res) => {
-        window.location.reload(false);
-      });
+        if ((res.status = 200)) {
+          SetSuccess(res.data);
+          window.location.reload(false);
+        } else SetError(res.data);
+      }).catch((e)=>{
+        SetError(e.response.data)
+      })
     } catch (e) {
-      console.log(e);
+      SetError(e.response.data)
     }
-  };
+  }
   return (
     <>
       <Model>
+       {Success && (<div className="alert alert-success" role="alert"> {Success} </div> )}
+        {Error && (<div className="alert alert-danger" role="alert">{Error} </div>)}
         <Form onChange={handleChange} Submit={handleSubmit} Date={Paiment.Date} appartement={Paiment.appartementid} />
       </Model>
     </>

@@ -7,23 +7,19 @@ services:
     volumes:
       - ./frontend:/app
     networks:
-     - livraison-networks
+     - syndicat-networks
   back-end:
-    build:
-      context: ./backend 
+    build: ./backend 
     volumes:
-    - /app/node_modules 
-    - ./backend:/app 
+     - ./backend:/app
     ports:
      - 8080:8080
     networks:
-     - livraison-networks     
+     - syndicat-networks     
     depends_on:
      - mongodb
   mongodb:
     image: mongo
-    env_file:
-      - ./backend/.env  
     environment:
       MONGO_INITDB_ROOT_USERNAME: root2
       MONGO_INITDB_ROOT_PASSWORD: root
@@ -34,7 +30,7 @@ services:
     volumes:
      - /data/db 
 networks:
-  livraison-networks:
+  syndicat-networks:
     driver: bridge
 volumes:
   mongoose-data:

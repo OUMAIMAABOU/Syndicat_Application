@@ -6,10 +6,23 @@ export default function Form(props) {
   useEffect(()=>{
     GET('appartement').then(res=>{
       SetAppartement(res.data)
+      console.log(res.data)
     })
   },[])
   return (
     <form className="form-container" onSubmit={props.Submit}>
+      {/* <div className="col-md-12">
+        <span>Prix</span>
+        <input
+          type="text"
+          name="prix"
+          className="form-control"
+          placeholder="Nom de Client"
+          required
+          value={props.prix}
+          onChange={props.onChange}
+        />
+      </div> */}
       <div className="col-md-12">
         <span>Date</span>
         <input
@@ -23,7 +36,8 @@ export default function Form(props) {
         />
       </div>
       <div className="col-md-12">
-        <span>Appartement</span>     
+        <span>Appartement</span>
+      
         <select
           name="appartementid"
           className="form-control text-dark  "

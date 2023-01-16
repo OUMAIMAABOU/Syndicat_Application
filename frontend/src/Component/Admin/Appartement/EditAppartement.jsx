@@ -20,10 +20,11 @@ export default function EditAppartement(props) {
       e.preventDefault();
       PUT(`appartement/${Appartement._id}`, Appartement).then((res) => {
         window.location.reload(false);
-      });
+      }).catch((e)=>{
+        SetError(e.response.data)
+      })
     } catch (e) {
-      console.log(e);
-    }
+      SetError(e.response.data)    }
   };
   return (
     <>

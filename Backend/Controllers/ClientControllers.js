@@ -1,14 +1,17 @@
 const Client = require("../Models/ClientModel");
+const {verificationTelephone,verificationCIN} =require("../Utils/Email.Utils")
 
 // method : post => url : api/client/CreateAppartement =>acces : Private
 exports.CreateClient = async (req, res) => {
   try {
     const { body } = req;
-    if (!await Client.findOne({ CIN: req.body.CIN })){
-       if (await Client.create({ ...body })) res.status(200).send("The Client was created successfully");
-      else res.status(400).json("The Client wasn't created successfully");  
-    }
-    else  res.status(400).send("already existe");
+    if(verificationCIN(body.CIN) && verificationTelephone(body.tele)){
+      (!await Client.findOne({ CIN: req.body.CIN }))?
+      ((await Client.create({ ...body }))? res.status(200).send("The Client was created successfully")
+      : res.status(400).json("The Client wasn't created successfully")):  
+      res.status(400).send("CIN already existe")
+    }else res.status(400).send("Telephone or CIN invalide");
+    
 
   } catch (e) {
     res.status(400).send(e.message);
@@ -19,20 +22,21 @@ exports.CreateClient = async (req, res) => {
 exports.UpdateClient = async (req, res) => {
   try {
     const { body } = req;
-    if ((await Client.updateOne({ _id: req.params.id }, { ...body })).modifiedCount)
-      res.status(200).send("The Client was Updated successfully");
-      else res.status(400).send("The Client wasn't Updated successfully");
-  } catch (e) {
-    res.status(400).send(e);
-  }
+    (verificationCIN(body.CIN) && verificationTelephone(body.tele))?
+      (((await Client.updateOne({ _id: req.params.id }, { ...body })).modifiedCount)?res.status(200).send("The Client was Updated successfully"):
+       res.status(400).send("The Client wasn't Updated successfully")):
+       res.status(400).send("Telephone or CIN invalide");
+    } catch (e) {
+      res.status(400).send(e);
+    }
+   
 };
 
 // method : delete => url : api/client/delete_client/:id =>acces : Private
 exports.DeleteClient = async (req, res) => {
     try {
-      if((await Client.deleteOne({_id:req.params.id})).deletedCount)  res.status(200).send("The Client was Deleted successfully");
-      else res.status(400).send("The Client wasn't Deleted successfully")
-
+     ((await Client.deleteOne({_id:req.params.id})).deletedCount)?res.status(200).send("The Client was Deleted successfully")
+      : res.status(400).send("The Client wasn't Deleted successfully")
     } catch (e) {
       res.status(400).send(e);
     }

@@ -1,4 +1,3 @@
-// import './App.css';
 import { useState } from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import ProductRout from "./Router/ProductRouter";
@@ -8,7 +7,7 @@ import Paiment from "./Page/Admin/Paiment";
 import LoginPage from "./Page/Auth/Login";
 import Facteur from "./Component/Admin/Payement/Facteur";
 import { UserContext } from "./Context/UseContext";
-
+// import MyComponent from "./Component/Login/table";
 
 function App() {
   const [value,setValue]=useState("")
@@ -24,6 +23,7 @@ function App() {
           </Route>
 
           <Route element={<LoginPage />} path="/" />
+          {/* <Route element={<MyComponent />} path="/tab" /> */}
         </Routes>
       </UserContext.Provider>
     </BrowserRouter>
