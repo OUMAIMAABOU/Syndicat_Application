@@ -64,7 +64,7 @@ export default function Form(props) {
           className="form-control text-dark  "
           onChange={props.onChange}
         >
-          <option value={props.loue}>--Please choose--</option>
+          <option value=''>--Please choose--</option>
           <option value="loue">loue</option>
           <option value="no loue">no loue</option>
         </select>

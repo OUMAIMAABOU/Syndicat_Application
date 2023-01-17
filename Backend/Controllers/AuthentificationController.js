@@ -13,21 +13,10 @@ exports.Login = async (req, res) => {
         localstorage('token', jwt.sign(payload,process.env.ACCESS_TOKEN,{expiresIn:"120m"}))
         res.status(200).json({token:localstorage('token'),username:users.fullname});
       } else res.status(400).json("password invalide");
-    } else res.status(400).json("can't find user");
+    } else res.status(400).json("can't find this user");
   } catch (e) {
     return res.status(400).json({ message: e });
   }
 };
 
-// // method : post => url : api/auth/Register =>acces : Public
-exports.Register = async (req, res) => {
-  const { body } = req;
-  if (!body) throw new CatchError(`Remplir tous les champs`, 400);
-  try {
-    body.password = await bcryptjs.hash(body.password, 10);
-    await Admin.create({ ...body });
-    res.json("created");
-  } catch (e) {
-    return res.status(400).send(e);
-  }
-};
+

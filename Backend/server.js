@@ -5,7 +5,6 @@ const mongoose = require('./Config/dbconfig');
 const globalError = require('./Middleware/CatchErrorMiddleware')
 const RouteErrorHandler= require('./Middleware/RouterMiddleware')
 
-
 const app = express()
 app.use(cors())
 app.use(express.json())
@@ -21,6 +20,7 @@ require("./Routers/PaimentRouter")(app);
 
 app.use(globalError)
 app.use(RouteErrorHandler)
+
 
 app.listen(process.env.PORT||3030,()=>{
     console.log(`http://localhost:${process.env.PORT}`)

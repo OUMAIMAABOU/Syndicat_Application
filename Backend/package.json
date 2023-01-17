@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "user": "node Data/Seeders/SeedersUser"
+
   },
   "author": "",
   "license": "ISC",
